@@ -17,10 +17,16 @@ import { useEffect, useState } from "react";
 //import Loader from "../Loader";
 
 
+import { useClerk } from '@clerk/clerk-react';// работает сам поставил
+import LogoutIcon from '@mui/icons-material/Logout';
+
 
 
 //* to (root)/layout.js    левая сторона сайта
 const LeftSideBar = () => {
+
+  const { signOut } = useClerk();// работает сам поставил
+
   //const { user, isLoaded } = useUser();
 
   const [loading, setLoading] = useState(true);
@@ -109,13 +115,36 @@ const LeftSideBar = () => {
         <SignedIn>
           <UserButton />
         </SignedIn>
+
         <SignedOut>
           <SignInButton />
         </SignedOut>
 
+        <br />
+
         {/* <UserButton appearance={{ baseTheme: dark }} /> */}
         <p className="text-light-1 text-body-bold">Manage Account</p>
       </div>
+
+
+
+
+
+      {/* эту я сам добавил    работает так */}
+      {/* <SignedIn className="s-out">
+        <LogoutIcon />
+        <button onClick={() => signOut()}>Sign Out</button>
+      </SignedIn> */}
+      <SignedIn>
+        <div className="s-out">
+          <LogoutIcon />
+          <button onClick={() => signOut()}>Sign Out</button>
+        </div>
+      </SignedIn>
+
+      
+
+
     </div>
 
   );

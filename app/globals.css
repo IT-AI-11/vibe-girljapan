@@ -68,3 +68,11 @@ body {
 .tab {
   @apply px-4 py-2 rounded-lg text-light-1 text-small-bold
 }
+
+.s-out{
+  width: fit-content;
+  display: flex;
+  gap: 20px;
+  padding: 10px 20px;
+  border: 1px solid orange;
+}
