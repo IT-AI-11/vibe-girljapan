@@ -1,0 +1,78 @@
+
+
+
+по этой делал:
+YT Code With Phuc девушка
+https://www.youtube.com/watch?v=yXSdYD_JHN4&t=17609s
+https://github.com/phuc-mai/vibezone/tree/master
+
+
+в проекте:
+
+-- этот проект похож очень на JS Mastery
+
+-- Next.js, MongoDB, React-Hook-Form + validation, без TypeScript у нее, Tailwindcss, Loader крутится
+   Clerk + Webhook для отправки в MongoDB из Clerk что user создан/created,
+   Vercel чтобы webhook от Clerk можно использовать
+-- Loader
+-- ее реальная ссылка еа прект: https://vibezone.vercel.app/sign-in?redirect_url=https%3A%2F%2Fvibezone.vercel.app%2F
+-- подкрашиваются навигации кнопки при переходе на страницы, сами кнопки в [массиве]
+-- [массивы] заголовков в constant index.js см. MainContainer.jsx <== ДИНАМИЧЕСКИЕ СТРАНИЦЫ БЕЗ ИСПОЛЬЗОВАНИЯ .map()
+-- type: mongoose.Schema.Types.ObjectId  relationships
+   ref: "User" 
+   ref: "Post" 
+
+
+  const pathname = usePathname(); в
+  Menu.jsx
+  MainContainer.jsx
+
+  import { useUser } from "@clerk/nextjs"; в
+  LeftSideBar.jsx
+  TopBar.jsx
+
+  import { useRouter } from "next/navigation"; в
+  TopBar.jsx
+
+  Loader в
+  TopBar.jsx
+  LeftSideBar.jsx
+
+
+
+Vercel
+deployment:   https://vercel.com/verceltestingnextjs-projects/vibe-girljapan/deployments
+logs:   https://vercel.com/verceltestingnextjs-projects/vibe-girljapan/logs?selectedLogId=zlb7r-1741619826149-6b3a00039122&page=2&refreshedAt=1741778046394
+environment-variables:   https://vercel.com/verceltestingnextjs-projects/vibe-girljapan/settings/environment-variables
+
+
+
+
+
+  // colors ================
+Цвета для комментариев и областей из extensions скачал "Better Comments" и "Colored Regions"
+// см. package json цвета "Colored Regions"
+//#region [rgba(2, 196, 15, 0.2)]
+// hello world 
+//#endregion
+
+//#region [rgba(0, 100, 255, 0.2)]
+//#endregion
+
+//region [rgba(241, 196, 15, 0.4)]
+// hello 
+//endregion
+
+// "Better Comments"
+/**
+ * * Green
+ * ! Red
+ * TODO Orange
+ * ? Blue
+ */
+
+//* Green
+//! Red
+//TODO orange
+//? Blue
+// colors ================
