@@ -12,7 +12,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 
-//! to LeftSideBar.jsx component
+//* to LeftSideBar.jsx component
 const Menu = () => {
 
   const pathname = usePathname();
