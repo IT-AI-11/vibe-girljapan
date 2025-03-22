@@ -8,10 +8,11 @@
 
 import { Webhook } from 'svix'
 import { headers } from 'next/headers'
-import { WebhookEvent } from '@clerk/nextjs/server'
+//import { WebhookEvent } from '@clerk/nextjs/server' этот import для TypeScript
+import { createOrUpdateUser, deleteUser } from "@lib/actions/user";
 
 
-//! to lib/actions/user.js
+//* to lib/actions/user.js
 export async function POST(req) {
 
   const SIGNING_SECRET = process.env.SIGNING_SECRET
