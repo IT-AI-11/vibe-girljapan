@@ -21,6 +21,7 @@ https://github.com/phuc-mai/vibezone/tree/master
 -- type: mongoose.Schema.Types.ObjectId  relationships
    ref: "User" 
    ref: "Post" 
+-- images/фотографии из внутренней памяти Лаптопа см. api/poast/new/route.js в нем: arrayBuffer(), buffer, process.cwd(), currentWorkingDirectory
 
 
   const pathname = usePathname(); в
@@ -28,15 +29,18 @@ https://github.com/phuc-mai/vibezone/tree/master
   MainContainer.jsx
 
   import { useUser } from "@clerk/nextjs"; в
-  LeftSideBar.jsx
-  TopBar.jsx
+  LeftSideBar.jsx component
+  TopBar.jsx component
+  CreatePost.jsx page
 
   import { useRouter } from "next/navigation"; в
-  TopBar.jsx
+  TopBar.jsx component
+  Posting.jsx component от create-react-form
 
   Loader в
-  TopBar.jsx
-  LeftSideBar.jsx
+  TopBar.jsx component
+  LeftSideBar.jsx component
+  CreatePost.jsx page
 
 
 

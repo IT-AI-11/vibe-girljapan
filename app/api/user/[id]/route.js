@@ -7,6 +7,7 @@ import { connectToDB } from "@lib/mongodb/mongoose";
 
 
 //* request from LeftSideBar.jsx
+//* CreatePost.jsx 
 export const GET = async (req, { params }) => {
 
     const awaitparams = await params;//await чтобы ошибку убрать 

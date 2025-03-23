@@ -31,7 +31,7 @@ const LeftSideBar = () => {
   // start STEPS 1:48:00 min. ========================================================================================================
   //TODO ШАГ 1 => получаем из Clerk текущего залогиненого user, все его данные в clerk используя useUser()
   const { user, isLoaded } = useUser();// текущие данные конкрктного пользователя кто залогинен
-  console.log("current user data Clerk ==============> ", user)
+  console.log("current user data Clerk LeftSideBar.jsx ==============> ", user)
   //TODO ШАГ 2 создаем GET endpoint => api/user/[id]/route.js для получения user из MongoDB
   //TODO ШАГ 3 
   const [loading, setLoading] = useState(true);
