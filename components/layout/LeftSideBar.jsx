@@ -7,13 +7,13 @@
 
 
 import { ClerkProvider, SignedIn, SignedOut, SignInButton } from '@clerk/nextjs'
-import { UserButton, useUser } from "@clerk/nextjs";
+import { UserButton, useUser } from "@clerk/nextjs";// текущие данные конкрктного пользователя кто залогинен
 import { dark } from "@clerk/themes";
 import Image from "next/image";
 import Link from "next/link";
 import Menu from "./Menu";
 import { useEffect, useState } from "react";
-//import Loader from "@components/Loader";
+import Loader from "@components/Loader";
 //import Loader from "../Loader";
 
 
@@ -27,64 +27,73 @@ const LeftSideBar = () => {
 
   const { signOut } = useClerk();// работает сам поставил
 
-  //const { user, isLoaded } = useUser();
 
+  // start STEPS 1:48:00 min. ========================================================================================================
+  //TODO ШАГ 1 => получаем из Clerk текущего залогиненого user, все его данные в clerk используя useUser()
+  const { user, isLoaded } = useUser();// текущие данные конкрктного пользователя кто залогинен
+  console.log("current user data Clerk ==============> ", user)
+  //TODO ШАГ 2 создаем GET endpoint => api/user/[id]/route.js для получения user из MongoDB
+  //TODO ШАГ 3 
   const [loading, setLoading] = useState(true);
-
   const [userData, setUserData] = useState({});
-
-  // const getUser = async () => {
-  //   const response = await fetch(`/api/user/${user.id}`);
-  //   const data = await response.json();
-  //   setUserData(data);
-  //   setLoading(false);
-  // };
-
-  // useEffect(() => {
-  //   if (user) {
-  //     getUser();
-  //   }
-  // }, [user]);
-
-
-
-  // return loading || !isLoaded ? (
-
-  //   <Loader />
-
-  // ) : (
+  //TODO ШАГ 4 
+  const getUser = async () => {
+    // ${user.id} значит id Clerk пользователя/user и получаем его из MongoDB
+    // те в MongoDB этот же пользователь как clerkId
+    // те ${user.id} это user id в Clerk и он же как clerkId в MongoDB
+    const response = await fetch(`/api/user/${user.id}`);// это Clerk id
+    const data = await response.json();
+    setUserData(data);
+    setLoading(false);
+  };
+   //TODO ШАГ 5
+  useEffect(() => {
+    if (user) {
+      getUser();
+    }
+  }, [user]);//[user] значит если [user] данные сменятся то getUser(); снова сработает
+  // end STEPS ========================================================================================================
 
 
 
-  return (
 
 
+
+  return loading || !isLoaded ? ( <Loader /> ) : (
+   // return (
     <div className="h-screen left-0 top-0 sticky overflow-auto px-10 py-6 flex flex-col gap-6 max-md:hidden 2xl:w-[350px] pr-20 custom-scrollbar">
       <Link href="/">
-        <Image
+
+      {/* original */}
+      <Image src="/assets/logo.png" alt="logo" width={200} height={200} />
+
+        {/* <Image
           src="https://tse1.mm.bing.net/th?id=OIP.lfKmO91p_sJaYBSg4BIeTAHaE8&pid=Api" // Direct link to the image
           alt="logo"
           width={200}
           height={200}
-        />
+        /> */}
+       
       </Link>
 
       <div className="flex flex-col gap-2">
         <div className="flex flex-col gap-2 items-center text-light-1">
           <Link href={`/profile/${userData._id}/posts`}>
 
-            {/* <Image
-              src={userData?.profilePhoto} 
+            <Image
+              src={userData?.profilePhoto}     // original
+              //src="/assets/phucmai.png"
               alt="profile photo"
               width={50}
               height={50}
               className="rounded-full"
-            /> */}
+            />
 
           </Link>
-          <p className="text-small-bold">
-            {userData?.firstName} {userData?.lastName}
-          </p>
+
+          <p className="text-small-bold text-orange-600"> {userData?.firstName} <span className='text-white'>/</span> {userData?.lastName} </p>
+      
+
         </div>
         <div className="flex text-light-1 justify-between">
           <div className="flex flex-col items-center">
@@ -142,7 +151,7 @@ const LeftSideBar = () => {
         </div>
       </SignedIn>
 
-      
+
 
 
     </div>

@@ -58,16 +58,61 @@
 
 
 
-// этот код сработал для next.config.mjs
+
+
+
+
+
+
+
+
+//этот код сработал для next.config.mjs
+// /** @type {import('next').NextConfig} */
+// const nextConfig = {
+//   images: {
+//     remotePatterns: [
+//       {
+//         protocol: 'https',
+//         hostname: 'tse1.mm.bing.net', // The hostname of the image
+//         port: '', // No specific port needed
+//         pathname: '/th/**', // The path pattern for the images
+//       },
+//     ],
+//   },
+// };
+
+// export default nextConfig;
+
+
+
+
+
+
+
+// /** @type {import('next').NextConfig} */
+// const nextConfig = {
+//   images: {
+//     remotePatterns: [
+//       {
+//         protocol: 'https',
+//         hostname: 'img.clerk.com',
+//       }
+//     ]
+//   }
+// }
+
+// module.exports = nextConfig
+
+
+
+// для js файла
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: 'tse1.mm.bing.net', // The hostname of the image
-        port: '', // No specific port needed
-        pathname: '/th/**', // The path pattern for the images
+        hostname: 'img.clerk.com',
       },
     ],
   },

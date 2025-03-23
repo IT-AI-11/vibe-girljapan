@@ -2,12 +2,24 @@
 
 "use client"
 
+
+import {
+  Home,
+  AddPhotoAlternateOutlined,
+  GroupOutlined,
+  BookmarksOutlined,
+  FavoriteBorder,
+} from "@mui/icons-material";
+
+
+
+
 import TopBar from "./TopBar";
 import { pageTitles } from "@constants";// ДИНАМИЧЕСКИЕ СТРАНИЦЫ БЕЗ ИСПОЛЬЗОВАНИЯ .map()
 import { usePathname } from "next/navigation";
 
 
-//! to (root)/layout.js ==> в основнойlayout.js
+//* to (root)/layout.js ==> в основнойlayout.js
 const MainContainer = ({ children }) => {
   // Get the current url path
   const currentPath = usePathname();

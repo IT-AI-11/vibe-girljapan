@@ -5,11 +5,20 @@
 
 "use client";
 
-
+import {
+  Home,
+  AddPhotoAlternateOutlined,
+  GroupOutlined,
+  BookmarksOutlined,
+  FavoriteBorder,
+} from "@mui/icons-material";
 
 
 import { useEffect, useState } from "react";
 import { Add, Logout, Person, Search } from "@mui/icons-material";
+
+//import { PersonAddIcon } from '@mui/icons-material';
+
 import { useRouter } from "next/navigation";
 import { SignOutButton, SignedIn, UserButton, useUser } from "@clerk/nextjs";
 import Link from "next/link";
@@ -19,7 +28,7 @@ import Loader from "@components/Loader";
 
 
 
-//! to MainContainer.jsx  середина сайта
+//* to MainContainer.jsx  середина сайта
 const TopBar = () => {
 
   const { user, isLoaded } = useUser();
@@ -58,7 +67,7 @@ const TopBar = () => {
   // ) : (
 
   // my
-  return ( 
+  return (
     <div className="flex justify-between items-center mt-6">
       <div className="relative">
         <input
@@ -74,6 +83,8 @@ const TopBar = () => {
         />
       </div>
 
+
+
       <button
         className="create-post-btn"
         onClick={() => router.push("/create-post")}
@@ -81,15 +92,27 @@ const TopBar = () => {
         <Add /> <p>Create A Post</p>
       </button>
 
+
+      <SignedIn>
+        <UserButton />
+      </SignedIn>
+      <Link href={`/profile/${userData._id}/posts`}>
+        <Person sx={{ fontSize: "35px", color: "white" }} />
+      </Link>
+
+
+      {/* на большом экране этот код спрятан md:hidden */}
       <div className="flex gap-4 md:hidden">
         <Link href={`/profile/${userData._id}/posts`}>
           <Person sx={{ fontSize: "35px", color: "white" }} />
         </Link>
-
+        {/* <AddPhotoAlternateOutlined sx={{ color: "white", fontSize: "26px" }} /> */}
+        {/* <PersonAddIcon sx={{ color: "white", fontSize: "26px" }}/> */}
         {/* <UserButton appearance={{ baseTheme: dark }} afterSignOutUrl="/sign-in" />   original  */}
         <UserButton appearance={{ baseTheme: dark }} />
-
       </div>
+
+
     </div>
 
 
